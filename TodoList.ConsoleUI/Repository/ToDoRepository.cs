@@ -8,17 +8,20 @@ namespace TodoList.ConsoleUI.Repository
     {
         public Todo Add(Todo item)
         {
-            throw new NotImplementedException();
+            Todos().Add(item);
+            return item;
         }
 
         public Todo? Delete(int id)
         {
-            throw new NotImplementedException();
+            Todo todo = GetById(id);
+            Todos().Remove(todo);
+            return todo;
         }
 
         public List<Todo> GetAll()
         {
-            throw new NotImplementedException();
+            return Todos();
         }
 
         public List<Todo> GetAllByTitleContains(string title)
@@ -28,12 +31,16 @@ namespace TodoList.ConsoleUI.Repository
 
         public Todo? GetById(int id)
         {
-            throw new NotImplementedException();
+            Todo todo = Todos().SingleOrDefault(x => x.Id == id);
+            return todo;
         }
 
-        public Todo? Update(Todo item)
+        public Todo? Update(int id, Todo item)
         {
-            throw new NotImplementedException();
+            Todo todo = Todos().FirstOrDefault(x => x.Id == id);
+            Todos().Remove(todo);
+            Todos().Add(item);
+            return item;
         }
     }
 }

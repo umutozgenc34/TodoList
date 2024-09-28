@@ -7,26 +7,34 @@ public sealed class UserRepository : BaseRepository, IUserRepository
 {
     public User Add(User item)
     {
-        throw new NotImplementedException();
+        Users().Add(item);
+        return item;
     }
 
     public User? Delete(int id)
     {
-        throw new NotImplementedException();
+        User user = GetById(id);
+        Users().Remove(user);
+        return user;
     }
 
     public List<User> GetAll()
     {
-        throw new NotImplementedException();
+        return Users();
     }
 
     public User? GetById(int id)
     {
-        throw new NotImplementedException();
+        User user = Users().SingleOrDefault(x => x.Id == id);
+        return user;
     }
 
-    public User? Update(User item)
+    public User? Update(int id,User item)
     {
-        throw new NotImplementedException();
+        User user = Users().FirstOrDefault(x => x.Id == id);
+        Users().Remove(user);
+        Users().Add(item);
+        return item;
+
     }
 }

@@ -10,6 +10,6 @@ public interface IRepository<TEntity,TId>
     public List<TEntity> GetAll();
     TEntity? GetById(TId id);
     TEntity Add(TEntity item);
-    TEntity? Update(TEntity item);
+    TEntity? Update(TId id,TEntity item);
     TEntity? Delete(TId id);
 }
